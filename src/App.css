@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+}
+
+table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:100%;
+  margin:auto;
+  border:none;
+}
+
+td, th {
+  padding:10px 15px;
+  width: 100%;
+  z-index: 1;
+}
+
+tr{
+  text-align: left;
+  border:none;
+}
+
+h1{
+  text-align: center;
+}
+.center{
+  overflow-y: scroll;
+  max-height: 400px;
+  margin: 60px;
+  width: 50%;
+  border:1px solid #dddddd;
+}
+
+.row{
+  padding:10px 60px;
+ }
+
+ .wallet{
+   border-radius: 5px;
+   float:right;
+   margin : 30px;
+   width: 400px;
+   height: 430px;
+   text-align: center;
+   border: 3px solid #73AD21;
+   box-sizing: border-box;
+ }
+
+ .buy{
+  border: none;
+  border-radius:8px;
+  padding:8px;
+  background-color:green;
+  color:white;
+ }
+
+ .sell{
+  border: none;
+  border-radius:8px;
+  padding:8px;
+  background-color:red;
+  color:white;
+ }
+
+ .stocks{
+  height: 300px;
+  box-sizing: border-box;
+  overflow-y: auto;
+ }
+
+.title{
+  position: sticky;
+  background-color: bisque;
+  top:0;
+  left:0;
+  height: 100%;
+  width:100%;
+}
+
