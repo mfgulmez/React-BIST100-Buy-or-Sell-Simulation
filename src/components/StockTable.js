@@ -5,6 +5,7 @@ function CurrencyTable({data, handleBuy}){
     return (
         <div className = "center">
         <table>
+            <thead>
             <tr className = "title">
                 <th>Name</th>
                 <th>Price</th>
@@ -12,7 +13,8 @@ function CurrencyTable({data, handleBuy}){
                 <th>Time</th>
                 <th>Opr</th>
             </tr>
-            
+            </thead>
+            <tbody>
             {data.map((stock) => (
              <tr key = {stock.name}>
              <td>{stock.name}</td>
@@ -22,6 +24,7 @@ function CurrencyTable({data, handleBuy}){
              <td><button className = "buy" onClick={() => handleBuy(stock.name, stock.price)}>Buy</button></td>
              </tr>
              ))}
+             </tbody>
         </table>
         
         </div>

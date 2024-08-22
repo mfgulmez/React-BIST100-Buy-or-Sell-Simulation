@@ -39,7 +39,7 @@ function App() {
             return boughtStock;
          })
          setStocksBought(updatedBoughtArray);
-      }}, [data, stocksBought]);
+      }}, [data]);
   // Handles error and loading state
   if (error) return <div className='failed'>failed to load</div>;
   //if (isValidating) return <div className="Loading">Loading...</div>;
@@ -87,7 +87,7 @@ function App() {
   return (
     <>
     <Header/>
-    <div class = "row">
+    <div className = "row">
     <Wallet balance = {balance} stocksBought = {stocksBought} handleSell = {handleSell}/>
     <CurrencyTable data = {data} handleBuy = {handleBuy}/>
     </div>
