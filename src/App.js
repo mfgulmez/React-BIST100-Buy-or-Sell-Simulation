@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import CurrencyTable from './components/StockTable.js';
 import Header from './components/Header.js';
 import Wallet from './components/Wallet.js'
-import React, {useState} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 
 // created function to handle API request
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -22,8 +22,24 @@ function App() {
   });
   
   // Ensure stocks is defined before accessing its data property
-  const data = stocks ? stocks.data : [];
- 
+   const data = useMemo(() => {
+   return stocks ? stocks.data : [];;
+ }, [stocks]);
+   
+   useEffect(() => {
+      if (data) {
+         const updatedBoughtArray = stocksBought.map(boughtStock => {
+            const matchingStock = data.find(stock => stock.name === boughtStock.name)
+            if(matchingStock){
+               return{
+                  ...boughtStock,
+                  price : parseFloat(matchingStock.price.replace(",", "."))
+               };
+            }
+            return boughtStock;
+         })
+         setStocksBought(updatedBoughtArray);
+      }}, [data, stocksBought]);
   // Handles error and loading state
   if (error) return <div className='failed'>failed to load</div>;
   //if (isValidating) return <div className="Loading">Loading...</div>;
