@@ -8,12 +8,14 @@ function Wallet({balance, stocksBought, handleSell}){
        <p>Your Balance is {parseFloat(balance).toFixed(2)}</p>
        <div className = "stocks">
        <table>
+       <tbody>
        {stocksBought.map((stockBought) => (
-         <tr>
+         <tr key = {stockBought.name}>
          <td>{stockBought.name} amount of {stockBought.amount} with price {stockBought.price}</td>
          <td><button className = "sell" onClick={() => handleSell(stockBought.name, stockBought.price, stockBought.amount)}>Sell</button></td>
          </tr>
        ))}
+       </tbody>
        </table>
        </div>
    </div>

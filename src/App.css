@@ -77,3 +77,32 @@ h1{
   height: 100%;
   width:100%;
 }
+@media(max-width: 650px){
+  h1{
+    font-size: 20px;
+  }
+  
+  .center{
+    max-height: 240px;
+    margin: 20px auto;
+    width: 270px;
+  }
+  .wallet{
+    max-height: 240px;
+    margin: 20px auto;
+    width: 270px;
+    float:none;
+  }
+
+  .change{
+    display: none;
+  }
+  .time{
+     display: none;
+  }
+  
+  .stocks{
+    max-height: 120px;
+    overflow-y: auto;
+  }
+}

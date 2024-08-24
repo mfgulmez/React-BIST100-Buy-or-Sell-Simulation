@@ -7,20 +7,20 @@ function CurrencyTable({data, handleBuy}){
         <table>
             <thead>
             <tr className = "title">
-                <th>Name</th>
-                <th>Price</th>
-                <th>Change</th>
-                <th>Time</th>
+                <th className = "name">Name</th>
+                <th className = "price">Price</th>
+                <th className = "change">Change</th>
+                <th className = "time">Time</th>
                 <th>Opr</th>
             </tr>
             </thead>
             <tbody>
             {data.map((stock) => (
              <tr key = {stock.name}>
-             <td>{stock.name}</td>
-             <td>{stock.price}</td>
-             <td>{stock.change}</td>
-             <td>{stock.time}</td>
+             <td className = "name">{stock.name}</td>
+             <td className = "price">{stock.price}</td>
+             <td className = "change">{stock.change}</td>
+             <td className = "time">{stock.time}</td>
              <td><button className = "buy" onClick={() => handleBuy(stock.name, stock.price)}>Buy</button></td>
              </tr>
              ))}

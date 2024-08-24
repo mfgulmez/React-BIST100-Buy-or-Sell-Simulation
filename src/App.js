@@ -29,15 +29,19 @@ function App() {
    useEffect(() => {
       if (data) {
          const updatedBoughtArray = stocksBought.map(boughtStock => {
-            const matchingStock = data.find(stock => stock.name === boughtStock.name)
+            const matchingStock = data.find(stock => (stock.name === boughtStock.name) && (stock.price !== boughtStock.price));
+
             if(matchingStock){
                return{
                   ...boughtStock,
-                  price : parseFloat(matchingStock.price.replace(",", "."))
+                  price : parseFloat(matchingStock.price.replace(",", ".")),
+                  status: "white"
                };
             }
+           
             return boughtStock;
          })
+         
          setStocksBought(updatedBoughtArray);
       }}, [data]);
   // Handles error and loading state
@@ -49,7 +53,7 @@ function App() {
         const remain = parseFloat(balance - stockPrice);
         console.log(stockName);
         if(remain >= 0){
-   
+        
         setStocksBought((prevStocks) => {
            console.log(prevStocks)
            const stock = prevStocks.find(stock => stock.name === stockName);
