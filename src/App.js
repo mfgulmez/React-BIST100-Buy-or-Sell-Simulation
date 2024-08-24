@@ -32,9 +32,10 @@ function App() {
             const matchingStock = data.find(stock => (stock.name === boughtStock.name) && (stock.price !== boughtStock.price));
 
             if(matchingStock){
+               const realPrice = matchingStock.price.replaceAll(".", "").replaceAll(",", ".");
                return{
                   ...boughtStock,
-                  price : parseFloat(matchingStock.price.replace(",", ".")),
+                  price : parseFloat(realPrice),
                };
             }
            
@@ -48,16 +49,16 @@ function App() {
   //if (isValidating) return <div className="Loading">Loading...</div>;
 
   function handleBuy(stockName, stockPrice){
-        stockPrice = parseFloat(stockPrice.replace(",", "."))
-        const remain = parseFloat(balance - stockPrice);
-        console.log(stockName);
+        const realPrice = stockPrice.replaceAll(".", "").replaceAll(",", ".");
+        const remain = parseFloat(balance - realPrice);
+        console.log(realPrice);
         if(remain >= 0){
         
         setStocksBought((prevStocks) => {
            console.log(prevStocks)
            const stock = prevStocks.find(stock => stock.name === stockName);
            if(stock === undefined){
-              prevStocks = [{name: stockName, amount: 1, price: stockPrice}, ...prevStocks];
+              prevStocks = [{name: stockName, amount: 1, price: realPrice}, ...prevStocks];
               return prevStocks;
            }
            else{
