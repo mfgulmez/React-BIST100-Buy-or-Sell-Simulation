@@ -35,13 +35,12 @@ function App() {
                return{
                   ...boughtStock,
                   price : parseFloat(matchingStock.price.replace(",", ".")),
-                  status: "white"
                };
             }
            
             return boughtStock;
          })
-         
+
          setStocksBought(updatedBoughtArray);
       }}, [data]);
   // Handles error and loading state
