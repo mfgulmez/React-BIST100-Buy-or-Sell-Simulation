@@ -1,22 +1,17 @@
 
 
-function Wallet({balance, stocksBought, handleSell}){
+function Wallet({stocksBought, handleSell}){
 
    return(
       <div className = "wallet">
-      <h1>Portfolio</h1>
-       <p>Your Balance is {parseFloat(balance).toFixed(2)}</p>
+      <h2>Portfolio</h2>
        <div className = "stocks">
-       <table>
-       <tbody>
        {stocksBought.map((stockBought) => (
-         <tr key = {stockBought.name}>
-         <td>{stockBought.name} amount of {stockBought.amount} with price {stockBought.price}</td>
-         <td><button className = "sell" onClick={() => handleSell(stockBought.name, stockBought.price, stockBought.amount)}>Sell</button></td>
-         </tr>
+         <div className = "stock" onClick={() => handleSell(stockBought.name, stockBought.price, stockBought.amount)}>
+         <p className = "stockname">{stockBought.name}:{stockBought.amount}<p className = "stockprice">₺{stockBought.price}</p></p>
+         <p className = {stockBought.status}> {stockBought.change}%</p>
+         </div>
        ))}
-       </tbody>
-       </table>
        </div>
    </div>
 );

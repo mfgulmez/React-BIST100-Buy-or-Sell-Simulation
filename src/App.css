@@ -1,28 +1,33 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#2A00B7, #42006C);
+}
 .App {
   text-align: center;
 }
 
-table{
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width:100%;
-  margin:auto;
-  border:none;
-}
-
-td, th {
-  padding:10px 15px;
-  width: 100%;
-  z-index: 1;
-}
-
-tr{
-  text-align: left;
-  border:none;
-}
-
 h1{
   text-align: center;
+}
+
+h2{
+  text-align: center;
+}
+
+p{
+  padding: 0;
+  margin: 2px;
+}
+
+.subtitle{
+  color: green;
 }
 .center{
   overflow-y: scroll;
@@ -34,75 +39,85 @@ h1{
 
 .row{
   padding:10px 60px;
- }
+}
 
- .wallet{
-   border-radius: 5px;
-   float:right;
-   margin : 30px;
-   width: 400px;
-   height: 430px;
-   text-align: center;
-   border: 3px solid #73AD21;
-   box-sizing: border-box;
- }
-
- .buy{
+.buy{
   border: none;
   border-radius:8px;
   padding:8px;
   background-color:green;
   color:white;
- }
+}
 
- .sell{
+.sell{
   border: none;
   border-radius:8px;
   padding:8px;
   background-color:red;
   color:white;
- }
+}
 
- .stocks{
-  height: 300px;
+.stocks{
+  height: 200px;
+  width:100%;
   box-sizing: border-box;
   overflow-y: auto;
- }
-
-.title{
-  position: sticky;
-  background-color: bisque;
-  top:0;
-  left:0;
-  height: 100%;
-  width:100%;
 }
-@media(max-width: 650px){
-  h1{
-    font-size: 20px;
-  }
-  
-  .center{
-    max-height: 240px;
-    margin: 20px auto;
-    width: 270px;
-  }
-  .wallet{
-    max-height: 240px;
-    margin: 20px auto;
-    width: 270px;
-    float:none;
-  }
 
-  .change{
-    display: none;
-  }
-  .time{
-     display: none;
-  }
-  
-  .stocks{
-    max-height: 120px;
-    overflow-y: auto;
-  }
+.stocks::-webkit-scrollbar { 
+  display: none;  /* For Chrome, Safari, and Opera */
+}
+
+.main{
+  border-radius: 50px;
+  background-color:#F5F7F9;
+  margin: 80px 300px;
+  padding: 30px;
+}
+
+.stocklist{
+  border: 3px solid #42006C;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  max-height: 450px;
+  width: 400px;
+}
+
+.wallet{
+  border: 3px solid #42006C;
+  float: right;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  max-height: 500px;
+  width: 200px;
+}
+
+.stock{
+  border-bottom: 1px solid #eeeeee;
+  width:100%;
+  height: 40px;
+}
+
+.stockname{
+  font-size: 15px;
+}
+
+.stockprice{
+  font-size: 12px;
+  float:right;
+}
+.increasing{
+  color: green;
+  font-size: 12px;
+  float:right;
+}
+
+.decreasing{
+  color: red;
+  font-size: 12px;
+  float:right;
 }

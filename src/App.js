@@ -23,7 +23,14 @@ function App() {
   
   // Ensure stocks is defined before accessing its data property
    const data = useMemo(() => {
-   return stocks ? stocks.data : [];;
+      if (!stocks || !stocks.data) return []; // Safely handle undefined or null stocks
+
+      return stocks.data.map(stock => {
+        const realPrice = stock.price.replaceAll(".", "").replaceAll(",", ".");
+        const realChange = stock.change.replaceAll(".", "").replaceAll(",", ".");
+        const stockStatus = realChange > 0 ? "increasing" : "decreasing";
+        return { ...stock, price: realPrice, status: stockStatus, change: realChange}; // Return the transformed stock object
+      });
  }, [stocks]);
    
    useEffect(() => {
@@ -32,10 +39,8 @@ function App() {
             const matchingStock = data.find(stock => (stock.name === boughtStock.name) && (stock.price !== boughtStock.price));
 
             if(matchingStock){
-               const realPrice = matchingStock.price.replaceAll(".", "").replaceAll(",", ".");
                return{
                   ...boughtStock,
-                  price : parseFloat(realPrice),
                };
             }
            
@@ -48,17 +53,14 @@ function App() {
   if (error) return <div className='failed'>failed to load</div>;
   //if (isValidating) return <div className="Loading">Loading...</div>;
 
-  function handleBuy(stockName, stockPrice){
-        const realPrice = stockPrice.replaceAll(".", "").replaceAll(",", ".");
-        const remain = parseFloat(balance - realPrice);
-        console.log(realPrice);
+  function handleBuy(stockName, stockPrice, stockStatus, stockChange){
+        const remain = parseFloat(balance - stockPrice);
         if(remain >= 0){
         
         setStocksBought((prevStocks) => {
-           console.log(prevStocks)
            const stock = prevStocks.find(stock => stock.name === stockName);
            if(stock === undefined){
-              prevStocks = [{name: stockName, amount: 1, price: realPrice}, ...prevStocks];
+              prevStocks = [{name: stockName, amount: 1, price: stockPrice, status: stockStatus, change: stockChange}, ...prevStocks];
               return prevStocks;
            }
            else{
@@ -89,13 +91,13 @@ function App() {
       });
    }
   return (
-    <>
-    <Header/>
+    <div class = "main">
+    <Header balance = {balance}/>
     <div className = "row">
     <Wallet balance = {balance} stocksBought = {stocksBought} handleSell = {handleSell}/>
     <CurrencyTable data = {data} handleBuy = {handleBuy}/>
     </div>
-    </>
+    </div>
   );
 }
 
