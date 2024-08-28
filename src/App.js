@@ -4,7 +4,6 @@ import useSWR from 'swr';
 import CurrencyTable from './components/Main/StockTable.js';
 import Header from './components/Main/Header.js';
 import Wallet from './components/Main/Wallet.js';
-import LoginSignup from './components/LoginSignup/LoginSignup.js';
 import React, {useState, useEffect, useMemo} from 'react';
 
 // created function to handle API request

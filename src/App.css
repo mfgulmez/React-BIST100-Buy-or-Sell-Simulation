@@ -1,14 +1,13 @@
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
   background: linear-gradient(#2A00B7, #42006C);
 }
+
 .App {
   text-align: center;
   border-bottom: #42006C;
@@ -72,7 +71,9 @@ p{
 .main{
   border-radius: 50px;
   background-color:#F5F7F9;
-  margin: 80px 300px;
+  width:900px;
+  height: 500px;
+  margin: auto;
   padding: 30px;
 }
 
@@ -130,9 +131,7 @@ p{
 @media only screen and (max-width: 600px){
   html, body {
     background: antiquewhite;
-    margin: 0;
-    padding: 0;
-  }
+     }
   .row{
     padding: 0;
   }
