@@ -11,6 +11,7 @@ body {
 }
 .App {
   text-align: center;
+  border-bottom: #42006C;
 }
 
 h1{
@@ -116,8 +117,35 @@ p{
   float:right;
 }
 
+.neutral{
+  font-size: 12px;
+  float:right;
+}
 .decreasing{
   color: red;
   font-size: 12px;
   float:right;
+}
+
+@media only screen and (max-width: 600px){
+  html, body {
+    background: antiquewhite;
+    margin: 0;
+    padding: 0;
+  }
+  .row{
+    padding: 0;
+  }
+  .main{
+     width:300px;
+     margin: auto;
+     margin-top:50px;
+  }
+
+  .stocklist{
+    width: 120px;
+  }
+  .wallet{
+    width:120px;
+  }
 }

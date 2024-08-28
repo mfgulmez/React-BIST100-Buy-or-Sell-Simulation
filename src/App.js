@@ -1,9 +1,10 @@
 
 import './App.css'
 import useSWR from 'swr';
-import CurrencyTable from './components/StockTable.js';
-import Header from './components/Header.js';
-import Wallet from './components/Wallet.js'
+import CurrencyTable from './components/Main/StockTable.js';
+import Header from './components/Main/Header.js';
+import Wallet from './components/Main/Wallet.js';
+import LoginSignup from './components/LoginSignup/LoginSignup.js';
 import React, {useState, useEffect, useMemo} from 'react';
 
 // created function to handle API request
@@ -28,7 +29,17 @@ function App() {
       return stocks.data.map(stock => {
         const realPrice = stock.price.replaceAll(".", "").replaceAll(",", ".");
         const realChange = stock.change.replaceAll(".", "").replaceAll(",", ".");
-        const stockStatus = realChange > 0 ? "increasing" : "decreasing";
+        let stockStatus = "";
+        if(realChange > 0){
+         stockStatus = "increasing"
+        }
+        else if(realChange < 0){
+         stockStatus = "decreasing"
+        }
+        else{
+         stockStatus = "neutral"
+        }
+        console.log(stock.name + " " + stockStatus);
         return { ...stock, price: realPrice, status: stockStatus, change: realChange}; // Return the transformed stock object
       });
  }, [stocks]);
@@ -91,13 +102,13 @@ function App() {
       });
    }
   return (
-    <div class = "main">
-    <Header balance = {balance}/>
-    <div className = "row">
-    <Wallet balance = {balance} stocksBought = {stocksBought} handleSell = {handleSell}/>
-    <CurrencyTable data = {data} handleBuy = {handleBuy}/>
-    </div>
-    </div>
+   <div className = "main">
+   <Header balance = {balance}/>
+   <div className = "row">
+   <Wallet balance = {balance} stocksBought = {stocksBought} handleSell = {handleSell}/>
+   <CurrencyTable data = {data} handleBuy = {handleBuy}/>
+   </div>
+   </div>
   );
 }
 

@@ -1,0 +1,7 @@
+<div className = "main">
+    <Header balance = {balance}/>
+    <div className = "row">
+    <Wallet balance = {balance} stocksBought = {stocksBought} handleSell = {handleSell}/>
+    <CurrencyTable data = {data} handleBuy = {handleBuy}/>
+    </div>
+    </div>
