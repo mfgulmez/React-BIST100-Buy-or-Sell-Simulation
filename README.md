@@ -1,5 +1,5 @@
 # BIST100 Buy/Sell Simulation
-## A React-based simulation app where users can buy or sell stocks of BIST100 regarding to real data in a simulation
+## A React-based portfolio tracking app where users can buy or sell stocks of BIST100 regarding to real data in a simulation
 - It is both responsive and robust in terms of fetching the stock data real time on API (delayed 15 min)
 
 ## PC
